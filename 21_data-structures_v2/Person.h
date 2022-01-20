@@ -26,7 +26,7 @@ inline Person::Person(const Person &obj)
 	cout << "copy constructor" << endl;
 	this->name = obj.name;
 	this->age = obj.age;
-	this->id = 0;
+	this->id = obj.id;
 }
 
 int Person::counter = 0;
@@ -58,8 +58,17 @@ inline Person::Person()
 	id = 0;
 	name = "";
 
-}
 
+}
+/*
+inline Person::Person(const Person& obj) {
+	
+	this->age = obj.age;
+	this->id = obj.id;
+	this->name = obj.name;
+	
+}
+*/
 inline Person::Person(int _age)
 {
 	counter++;

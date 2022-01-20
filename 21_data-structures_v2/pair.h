@@ -2,41 +2,44 @@
 template <typename T, typename S>
 class my_pair {
 public:
-	T* first;
+	T first;
 	S* second;
 	my_pair();
 	my_pair(T, S);
 	~my_pair();
-	my_pair(my_pair& obj);
+	my_pair(const my_pair& obj);
 	
 };
 
 template<typename T, typename S>
 inline my_pair<T, S>::~my_pair()
 {	
-	delete first, second;
+	delete second;
 }
 
 
 template<typename T, typename S>
-inline my_pair<T, S>::my_pair(my_pair& obj)
+inline my_pair<T, S>::my_pair(const my_pair& obj)
 {
-	first = new T(obj.first);
-	second = new S(obj.second);
+	first = obj.first;
+	second = obj.second;
 }
 
+
 template<typename T, typename S>
-inline my_pair<T, S>::my_pair(T key, S value)
+inline my_pair<T, S>::my_pair(T key, S value)// t is not an object while s is
 {
-	first = new T(key);
+	first = key;
 	second = new S(value);
 }
 
 template<typename T, typename S>
 inline my_pair<T, S>::my_pair()
 {
-	first = new T;
+	first = 0;
 	second = new S;
+	/*
 	*first = NULL;
 	*second = NULL;
+	*/
 }

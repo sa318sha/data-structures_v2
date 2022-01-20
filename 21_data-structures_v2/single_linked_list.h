@@ -15,7 +15,7 @@ public:
 
 	single_linked_list<T>();
 	single_linked_list<T>(T);
-	int hash_func();
+	//int hash_func();
 
 private:
 	T* val;
@@ -40,7 +40,7 @@ int single_linked_list<T>::counter = 0;
 
 
 template<typename T>
-inline void single_linked_list<T>::setVal(T val)//T is a pair in the hash_map_2
+inline void single_linked_list<T>::setVal(T val)//T is a pair in hash_map_2
 {
 
 	*this->val = val;
