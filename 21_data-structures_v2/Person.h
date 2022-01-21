@@ -19,7 +19,18 @@ public:
 	~Person();
 	Person(const Person&);
 	int get_hash_value() const;
+
+	bool operator==(const Person&);
 };
+
+inline bool Person::operator==(const Person& obj)
+{
+	if (/*obj.age == this->age && obj.name == this->name && */ obj.id == this->id) {
+		return true;
+	}
+	return false;
+}
+
 
 inline Person::Person(const Person &obj)
 {

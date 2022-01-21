@@ -15,17 +15,73 @@ private:
 	int hash_value(T);
 
 public:
+	bool contains(T, S&);
 	bool delete_val(T, S);
 	bool find(T, S);
-	void insert(const T, const S);
+	void insert(const T, S&);
 	unordered_map();
 	unordered_map(int);
 	~unordered_map();
 };
 
 template<typename T, typename S>
-inline void unordered_map<T, S>::insert(const T key, const S value)
+inline bool unordered_map<T, S>::contains(T key, S& val)
 {
+	int hash_key = hash_value(key)%_size;
+
+	single_linked_list<my_pair<T, S>>* ptr = &arr[hash_key];
+
+	while (ptr != NULL) {
+		
+		if (*ptr->val->second == val) {
+			return true;
+		}
+		
+		ptr = ptr->next;
+	}
+
+	return false;
+}
+
+template<typename T, typename S>
+inline void unordered_map<T, S>::insert(const T key, S& value)
+{
+
+	if (!contains(key,value)) {
+		int hash_key = hash_value(key)%_size;
+
+		single_linked_list<my_pair<T, S>>* ptr = &arr[hash_key];
+		if (ptr->next == nullptr && ptr->val == NULL) {
+			ptr->setVal(my_pair<T, S>(key, value));
+				//single_linked_list<my_pair<T, S>>(my_pair<T, S>(key, value));
+			//ptr->val->first = key;
+			//ptr->val->second = &value;
+		}
+		else {
+			while (ptr->next != NULL) {
+				ptr = ptr->next;
+			}
+			//ptr is finsihed
+			
+			//my_pair<T, S> temp1(key, value);
+			//single_linked_list<my_pair<T, S>>* temp = new single_linked_list<my_pair<T, S>>(my_pair<T, S>(key, value));
+			ptr->next =  new single_linked_list<my_pair<T, S>>(my_pair<T, S>(key, value));
+			
+			/*
+			single_linked_list<my_pair<T, S>>* temp = new single_linked_list<my_pair<T, S>>;
+
+			temp->val->first = key;
+			temp->val->second = &value;
+			ptr->next = temp;
+			*/
+		}
+	}
+	
+	
+	/*
+	//empty
+		
+	}
 	//T is the key value we need to calc the hash func off and S is where we score our value?
 	//hash values calculations
 /*

@@ -34,15 +34,21 @@ Person& changeName (Person& obj) {
 int main()
 {
 
-    unordered_map<int, string> hash_map;
 
-    //Person Sasha(19, "Sasha", 12345);
+    //hash table and binary seach tree need some tuning finsihed mostly
+//avl tttree and balanced binary search trees  
 
-    hash_map.insert(12, "Sasha");
+    unordered_map<int, Person> hash_map;
+
+    Person Sasha(19, "Sasha", 12345);
+
+    Person hehehaha(19, "hehehahah", 222225);
+
+    hash_map.insert(12, Sasha);
+    hash_map.insert(12, hehehaha);
 
     //TODO:
-    //hash table and binary seach tree need some tuning finsihed mostly
-    //avl tttree and balanced binary search trees
+
 
     /*
     binary_search_tree<int> bst;

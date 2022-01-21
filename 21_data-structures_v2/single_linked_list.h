@@ -16,9 +16,11 @@ public:
 	single_linked_list<T>();
 	single_linked_list<T>(T);
 	//int hash_func();
+	T* val;
+
 
 private:
-	T* val;
+	
 
 protected:
 
@@ -55,7 +57,7 @@ inline const T& single_linked_list<T>::getVal()
 }
 
 template<typename T>
-inline single_linked_list<T>::single_linked_list(T a)
+inline single_linked_list<T>::single_linked_list(T a)// a can be an object
 {
 	next = nullptr;
 	val = new T(a);
@@ -66,6 +68,7 @@ inline single_linked_list<T>::single_linked_list()
 {
 	next = nullptr;
 	val = new T;
+	//val = NULL;
 	counter++;
 
 
@@ -75,7 +78,7 @@ template<typename T>
 inline single_linked_list<T>::~single_linked_list()
 {
 
-	std::cout << "inside single list destructor deleting value " << std::endl;
+	std::cout << "inside single list destructor deleting counter value " << counter << std::endl;
 	delete this->val;
 	counter--;
 }
